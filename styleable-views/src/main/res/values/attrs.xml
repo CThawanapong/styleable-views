@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="typeFaceAsset" format="string" />
+
+    <declare-styleable name="StyleableTextView">
+        <attr name="typeFaceAsset" />
+    </declare-styleable>
+
+    <declare-styleable name="StyleableEditText">
+        <attr name="typeFaceAsset" />
+    </declare-styleable>
+
+    <declare-styleable name="StyleableStrikeThroughTextView">
+        <attr name="typeFaceAsset" />
+        <attr name="enableStrikeThrough" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="StyleableButton">
+        <attr name="buttonText" format="string" />
+        <attr name="buttonPadding" format="dimension" />
+        <attr name="buttonTextSize" format="dimension" />
+        <attr name="buttonBackgroundColor" format="color" />
+        <attr name="buttonTextColor" format="color" />
+        <attr name="buttonLeftDrawable" format="integer" />
+        <attr name="buttonDrawablePadding" format="dimension" />
+        <attr name="buttonHorizontalPadding" format="dimension" />
+    </declare-styleable>
+</resources>
