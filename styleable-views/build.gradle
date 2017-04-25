@@ -1,28 +1,32 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'styleable-views'
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
 
-    publishedGroupId = 'com.github.cthawanapong'
-    libraryName = 'StyleableViews'
-    artifact = 'styleable-views'
+    pkg {
+        repo = 'styleable-views'
+        name = 'styleable-views'
+        websiteUrl = 'https://github.com/CThawanapong/styleable-views'
+        issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
+        vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
+        licenses = ['Apache-2.0']
+        labels = ['android', 'custom view']
+        publicDownloadNumbers = false
 
-    libraryDescription = 'Use for creating highly customizable text fields, input field, button, and etc.'
+        githubRepo = 'https://github.com/CThawanapong/styleable-views'
+        githubReleaseNotesFile = 'README.md'
 
-    siteUrl = 'https://github.com/CThawanapong/styleable-views'
-    gitUrl = 'https://github.com/CThawanapong/styleable-views.git'
-
-    libraryVersion = '1.0.0'
-
-    developerId = 'fealous'
-    developerName = 'Chavit Thawanapong'
-    developerEmail = 'c.thawanapong@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+        version {
+            name = '1.0.0'
+            vcsTag = '1.0.0'
+            desc = 'Use for creating highly customizable text fields, input field, button, and etc.'
+            released = new Date()
+        }
+    }
 }
 
 android {
