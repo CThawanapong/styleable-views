@@ -1,34 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-bintray {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-    user = properties.getProperty('bintray.user')
-    key = properties.getProperty('bintray.apikey')
-
-    pkg {
-        repo = 'styleable-views'
-        name = 'styleable-views'
-        websiteUrl = 'https://github.com/CThawanapong/styleable-views'
-        issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
-        vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
-        licenses = ['Apache-2.0']
-        labels = ['android', 'custom view']
-        publicDownloadNumbers = false
-
-        githubRepo = 'https://github.com/CThawanapong/styleable-views'
-        githubReleaseNotesFile = 'README.md'
-
-        version {
-            name = '1.0.0'
-            vcsTag = '1.0.0'
-            desc = 'Use for creating highly customizable text fields, input field, button, and etc.'
-            released = new Date()
-        }
-    }
-}
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -62,3 +34,6 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'

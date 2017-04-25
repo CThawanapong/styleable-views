@@ -1,0 +1,45 @@
+apply plugin: 'com.jfrog.bintray'
+
+version = '1.0.0'
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'styleable-views'
+        name = 'styleable-views'
+        desc = 'Use for creating highly customizable text fields, input field, button, and etc.'
+        websiteUrl = 'https://github.com/CThawanapong/styleable-views'
+        issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
+        vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
+        licenses = ['Apache-2.0']
+        labels = ['android', 'custom view']
+        publish = true
+        publicDownloadNumbers = false
+    }
+}

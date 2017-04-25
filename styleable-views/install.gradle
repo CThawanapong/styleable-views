@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.github.cthawanapong'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'com.github.cthawanapong'
+                artifactId 'styleable-views'
+
+                name 'Styleable Views'
+                description 'Use for creating highly customizable text fields, input field, button, and etc.'
+                url 'https://github.com/CThawanapong/styleable-views'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'FeaLouS'
+                        name 'Chavit Thawanapong'
+                        email 'c.thawanapong@gmail.com'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/CThawanapong/styleable-views.git'
+                    developerConnection 'https://github.com/CThawanapong/styleable-views.git'
+                    url 'https://github.com/CThawanapong/styleable-views'
+
+                }
+            }
+        }
+    }
+}
