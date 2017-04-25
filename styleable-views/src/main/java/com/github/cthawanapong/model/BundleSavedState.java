@@ -1,4 +1,4 @@
-package model;
+package com.github.cthawanapong.model;
 
 import android.os.Bundle;
 import android.os.Parcel;

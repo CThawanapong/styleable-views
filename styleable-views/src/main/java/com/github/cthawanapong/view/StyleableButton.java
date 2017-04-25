@@ -1,4 +1,4 @@
-package view;
+package com.github.cthawanapong.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,9 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.github.cthawanapong.model.BundleSavedState;
 import com.github.cthawanapong.styleableviews.R;
-
-import model.BundleSavedState;
 
 /**
  * Created by Chavit Thawanapong on 4/25/2017 AD.

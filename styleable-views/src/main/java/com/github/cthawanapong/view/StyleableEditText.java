@@ -1,4 +1,4 @@
-package view;
+package com.github.cthawanapong.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,9 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.github.cthawanapong.manager.TypeFaceManager;
 import com.github.cthawanapong.styleableviews.R;
-
-import manager.TypeFaceManager;
 
 /**
  * Created by Chavit Thawanapong on 4/25/2017 AD.

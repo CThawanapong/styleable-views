@@ -1,9 +1,9 @@
-package adapter;
+package com.github.cthawanapong.adapter;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import view.StyleableEditText;
+import com.github.cthawanapong.view.StyleableEditText;
 
 /**
  * Created by Chavit Thawanapong on 4/25/2017 AD.

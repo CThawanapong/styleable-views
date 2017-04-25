@@ -1,4 +1,4 @@
-package manager;
+package com.github.cthawanapong.manager;
 
 import android.content.Context;
 import android.content.res.AssetManager;

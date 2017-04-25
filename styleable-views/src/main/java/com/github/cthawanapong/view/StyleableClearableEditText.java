@@ -1,4 +1,4 @@
-package view;
+package com.github.cthawanapong.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,9 +9,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.github.cthawanapong.adapter.StyleableTextWatcherAdapter;
 import com.github.cthawanapong.styleableviews.R;
-
-import adapter.StyleableTextWatcherAdapter;
 
 /**
  * Created by Chavit Thawanapong on 4/25/2017 AD.

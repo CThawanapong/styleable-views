@@ -1,6 +1,6 @@
 apply plugin: 'com.jfrog.bintray'
 
-version = '1.0.0'
+version = '1.0.1'
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -38,7 +38,7 @@ bintray {
         issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
         vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
         licenses = ['Apache-2.0']
-        labels = ['android', 'custom view']
+        labels = ['android', 'custom com.github.cthawanapong.view']
         publish = true
         publicDownloadNumbers = false
     }
