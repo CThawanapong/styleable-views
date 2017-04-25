@@ -1,6 +1,30 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'styleable-views'
+
+    publishedGroupId = 'com.github.cthawanapong'
+    libraryName = 'StyleableViews'
+    artifact = 'styleable-views'
+
+    libraryDescription = 'Use for creating highly customizable text fields, input field, button, and etc.'
+
+    siteUrl = 'https://github.com/CThawanapong/styleable-views'
+    gitUrl = 'https://github.com/CThawanapong/styleable-views.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'fealous'
+    developerName = 'Chavit Thawanapong'
+    developerEmail = 'c.thawanapong@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -12,6 +36,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
