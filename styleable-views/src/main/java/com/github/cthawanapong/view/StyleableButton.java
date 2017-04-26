@@ -209,6 +209,11 @@ public class StyleableButton extends FrameLayout implements View.OnClickListener
         return mButtonText;
     }
 
+    public void setBackgroundColor(int color) {
+        mBackgroundColor = color;
+        mLayoutText.setBackgroundColor(mBackgroundColor);
+    }
+
     @Override
     public void onClick(View v) {
         if (mListener != null && v instanceof ViewGroup) {
