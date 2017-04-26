@@ -205,6 +205,10 @@ public class StyleableButton extends FrameLayout implements View.OnClickListener
         setDisplayButtonText();
     }
 
+    public String getButtonText() {
+        return mButtonText;
+    }
+
     @Override
     public void onClick(View v) {
         if (mListener != null && v instanceof ViewGroup) {
