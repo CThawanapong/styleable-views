@@ -11,6 +11,8 @@ import android.util.Log;
 import com.github.cthawanapong.manager.TypeFaceManager;
 import com.github.cthawanapong.styleableviews.R;
 
+import java.util.Locale;
+
 /**
  * Created by Chavit Thawanapong on 4/25/2017 AD.
  * Email: c.thawanapong@gmail.com
@@ -66,6 +68,22 @@ public class StyleableTextView extends AppCompatTextView {
                         setTypeface(tf, style);
                     else
                         Log.d(TAG, String.format("Could not create a font from asset: %s", fontAsset));
+                } else if (TypeFaceManager.getInstance().isDefaultFontMapAvailable()) {
+                    String language = Locale.getDefault().getLanguage();
+                    if (TypeFaceManager.getInstance().isFontDefaultFontAvailable(language)) {
+                        fontAsset = "fonts/" + TypeFaceManager.getInstance().getDefaultFontName(language);
+
+                        Typeface tf = TypeFaceManager.getInstance().getFont(fontAsset);
+                        int style = Typeface.NORMAL;
+
+                        if (getTypeface() != null)
+                            style = getTypeface().getStyle();
+
+                        if (tf != null)
+                            setTypeface(tf, style);
+                        else
+                            Log.d("FontText", String.format("Could not create a font from asset: %s", fontAsset));
+                    }
                 }
 
                 ta.recycle();

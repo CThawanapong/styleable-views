@@ -21,6 +21,7 @@ public class TypeFaceManager {
     private Context mContext;
     private AssetManager mAssetManager;
     private Map<String, Typeface> mFontList;
+    private Map<String, String> mDefaultFontList;
 
     private TypeFaceManager() {
     }
@@ -35,6 +36,7 @@ public class TypeFaceManager {
         mContext = applicationContext;
         this.mAssetManager = mContext.getAssets();
         mFontList = new HashMap<>();
+        mDefaultFontList = new HashMap<>();
     }
 
     public Typeface getFont(String asset) {
@@ -75,5 +77,21 @@ public class TypeFaceManager {
             asset = String.format("%s.ttf", asset);
 
         return asset;
+    }
+
+    public void addDefaultFontForLocale(String localeCode, String fontName) {
+        mDefaultFontList.put(localeCode, fontName);
+    }
+
+    public boolean isDefaultFontMapAvailable() {
+        return mDefaultFontList != null && !mDefaultFontList.isEmpty();
+    }
+
+    public boolean isFontDefaultFontAvailable(String language) {
+        return mDefaultFontList.containsKey(language);
+    }
+
+    public String getDefaultFontName(String language) {
+        return mDefaultFontList.get(language);
     }
 }
