@@ -3,4 +3,7 @@
     <!-- Border Button -->
     <dimen name="border_button_line_thickness">1dp</dimen>
     <dimen name="default_button_text_size">14sp</dimen>
+
+    <dimen name="default_card_button_elevation">0dp</dimen>
+    <dimen name="default_card_button_corner_radius">0dp</dimen>
 </resources>
