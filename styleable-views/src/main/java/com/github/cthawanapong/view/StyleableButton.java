@@ -87,7 +87,7 @@ public class StyleableButton extends FrameLayout implements View.OnClickListener
 
     private void initInflate() {
         //Inflate Layout
-        inflate(getContext(), R.layout.view_button, this);
+        inflate(getContext(), R.layout.view_styleable_button, this);
     }
 
     private void initInstance(Context context, AttributeSet attrs) {
