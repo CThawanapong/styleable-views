@@ -66,3 +66,10 @@
     java.lang.Object writeReplace();
     java.lang.Object readResolve();
 }
+
+-keep,allowshrinking class com.github.cthawanapong.view.* {
+    public <methods>;
+    protected <methods>;
+    public static <methods>;
+    public <init>(...);
+}
