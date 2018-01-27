@@ -2,6 +2,28 @@ apply plugin: 'com.jfrog.bintray'
 
 version = '2.0.1'
 
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'styleable-views'
+        name = 'styleable-views'
+        desc = 'Use for creating highly customizable text fields, input field, button, and etc.'
+        websiteUrl = 'https://github.com/CThawanapong/styleable-views'
+        issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
+        vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
+        licenses = ['Apache-2.0']
+        labels = ['android', 'custom com.github.cthawanapong.view']
+        publish = true
+        publicDownloadNumbers = false
+    }
+}
+
 //just copy paste the lines below
 if (project.hasProperty("kotlin")) { //Kotlin libraries
     task sourcesJar(type: Jar) {
@@ -38,26 +60,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-bintray {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = 'styleable-views'
-        name = 'styleable-views'
-        desc = 'Use for creating highly customizable text fields, input field, button, and etc.'
-        websiteUrl = 'https://github.com/CThawanapong/styleable-views'
-        issueTrackerUrl = 'https://github.com/CThawanapong/styleable-views/issues'
-        vcsUrl = 'https://github.com/CThawanapong/styleable-views.git'
-        licenses = ['Apache-2.0']
-        labels = ['android', 'custom com.github.cthawanapong.view']
-        publish = true
-        publicDownloadNumbers = false
-    }
 }
