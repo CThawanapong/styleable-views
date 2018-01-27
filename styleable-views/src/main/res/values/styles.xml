@@ -1,12 +1,13 @@
 <resources>
 
     <style name="BorderButton">
-        <item name="android:layout_marginTop">@dimen/border_button_line_thickness</item>
-        <item name="android:layout_marginLeft">@dimen/border_button_line_thickness</item>
-        <item name="android:layout_marginStart">@dimen/border_button_line_thickness</item>
-        <item name="android:layout_marginRight">@dimen/border_button_line_thickness</item>
-        <item name="android:layout_marginEnd">@dimen/border_button_line_thickness</item>
-        <item name="android:layout_marginBottom">@dimen/border_button_line_thickness</item>
+        <item name="android:layout_marginTop">@dimen/styleable_border_button_line_thickness</item>
+        <item name="android:layout_marginLeft">@dimen/styleable_border_button_line_thickness</item>
+        <item name="android:layout_marginStart">@dimen/styleable_border_button_line_thickness</item>
+        <item name="android:layout_marginRight">@dimen/styleable_border_button_line_thickness</item>
+        <item name="android:layout_marginEnd">@dimen/styleable_border_button_line_thickness</item>
+        <item name="android:layout_marginBottom">@dimen/styleable_border_button_line_thickness
+        </item>
         <item name="android:background">@android:color/white</item>
     </style>
 </resources>
