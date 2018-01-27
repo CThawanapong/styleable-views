@@ -150,7 +150,7 @@ class StyleableButton @JvmOverloads constructor(
     }
 
     private fun setInternalButtonTextColor(color: Int) {
-        button.setHintTextColor(color)
+        button.setTextColor(color)
     }
 
     private fun setInternalButtonLeftIcon(leftIcon: Drawable?) {
