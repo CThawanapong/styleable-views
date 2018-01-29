@@ -6,13 +6,15 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.util.SparseArray
+import android.util.TypedValue
 import android.view.View
-import android.widget.FrameLayout
 import com.github.cthawanapong.model.BundleSavedState
 import com.github.cthawanapong.styleableviews.R
 import kotlinx.android.synthetic.main.view_styleable_button.view.*
+
 
 /**
  * Created by CThawanapong on 27/1/2018 AD.
@@ -20,7 +22,7 @@ import kotlinx.android.synthetic.main.view_styleable_button.view.*
  */
 class StyleableButton @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : CardView(context, attrs, defStyleAttr) {
     companion object {
         @JvmStatic
         private val TAG = StyleableButton::class.java.simpleName
@@ -95,12 +97,12 @@ class StyleableButton @JvmOverloads constructor(
             field = value
             setInternalButtonBorderColor(field)
         }
-    var buttonCornerRadius: Float = 0.toFloat()
+    var buttonCornerRadius: Int = 0
         set(value) {
             field = value
             setInternalButtonCornerRadius(field)
         }
-    var buttonElevation: Float = 0.toFloat()
+    var buttonElevation: Int = 0
         set(value) {
             field = value
             setInternalButtonElevation(field)
@@ -121,16 +123,16 @@ class StyleableButton @JvmOverloads constructor(
 
             with(ta) {
                 buttonText = ta.getString(R.styleable.StyleableButton_styleableButtonText)
-                buttonTextSize = ta.getDimension(R.styleable.StyleableButton_styleableButtonTextSize, context.resources.getDimension(R.dimen.styleable_default_button_text_size))
-                buttonBackgroundColor = ta.getColor(R.styleable.StyleableButton_styleableButtonBackgroundColor, Color.WHITE)
+                buttonTextSize = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonTextSize, context.resources.getDimensionPixelSize(R.dimen.styleable_default_button_text_size)).toFloat()
+                buttonBackgroundColor = ta.getColor(R.styleable.StyleableButton_styleableButtonBackgroundColor, Color.TRANSPARENT)
                 buttonTextColor = ta.getColor(R.styleable.StyleableButton_styleableButtonTextColor, ContextCompat.getColor(context, R.color.default_text_color))
                 buttonLeftIcon = ta.getDrawable(R.styleable.StyleableButton_styleableButtonLeftDrawable)
                 buttonDrawablePadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonDrawablePadding, 0)
                 buttonHorizontalPadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonHorizontalPadding, 0)
                 buttonVerticalPadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonVerticalPadding, context.resources.getDimension(R.dimen.styleable_default_button_horizontal_padding).toInt())
-                buttonBorderColor = ta.getColor(R.styleable.StyleableButton_styleableButtonBorderColor, Color.BLACK)
-                buttonCornerRadius = ta.getDimension(R.styleable.StyleableButton_styleableButtonCornerRadius, 0.toFloat())
-                buttonElevation = ta.getDimension(R.styleable.StyleableButton_styleableButtonElevation, 0.toFloat())
+                buttonBorderColor = ta.getColor(R.styleable.StyleableButton_styleableButtonBorderColor, Color.TRANSPARENT)
+                buttonCornerRadius = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonCornerRadius, 0)
+                buttonElevation = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonElevation, 0)
             }
 
             ta.recycle()
@@ -142,11 +144,11 @@ class StyleableButton @JvmOverloads constructor(
     }
 
     private fun setInternalTextSize(textSize: Float) {
-        button.textSize = textSize
+        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
     }
 
     private fun setInternalButtonBackgroundColor(backgroundColor: Int) {
-        layoutText.setBackgroundColor(backgroundColor)
+        layoutText.setCardBackgroundColor(backgroundColor)
     }
 
     private fun setInternalButtonTextColor(color: Int) {
@@ -166,15 +168,16 @@ class StyleableButton @JvmOverloads constructor(
     }
 
     private fun setInternalButtonBorderColor(color: Int) {
-        layoutBorder.setBackgroundColor(color)
+        setCardBackgroundColor(color)
     }
 
-    private fun setInternalButtonCornerRadius(radius: Float) {
-        layoutBorder.radius = radius
+    private fun setInternalButtonCornerRadius(newRadius: Int) {
+        layoutText.radius = newRadius.toFloat()
+        radius = newRadius.toFloat()
     }
 
-    private fun setInternalButtonElevation(elevation: Float) {
-        layoutBorder.cardElevation = elevation
+    private fun setInternalButtonElevation(elevation: Int) {
+        cardElevation = elevation.toFloat()
     }
 
     fun onClick(onClickListener: OnClickListener) {
@@ -214,8 +217,8 @@ class StyleableButton @JvmOverloads constructor(
             putInt(ARG_HORIZONTAL_PADDING, buttonHorizontalPadding)
             putInt(ARG_VERTICAL_PADDING, buttonVerticalPadding)
             putInt(ARG_BORDER_COLOR, buttonBorderColor)
-            putFloat(ARG_CORNER_RADIUS, buttonCornerRadius)
-            putFloat(ARG_ELEVATION, buttonElevation)
+            putInt(ARG_CORNER_RADIUS, buttonCornerRadius)
+            putInt(ARG_ELEVATION, buttonElevation)
         }
 
         //Save it to Parcelable
@@ -255,7 +258,7 @@ class StyleableButton @JvmOverloads constructor(
         buttonHorizontalPadding = bundle.getInt(ARG_HORIZONTAL_PADDING)
         buttonVerticalPadding = bundle.getInt(ARG_VERTICAL_PADDING)
         buttonBorderColor = bundle.getInt(ARG_BORDER_COLOR)
-        buttonCornerRadius = bundle.getFloat(ARG_CORNER_RADIUS)
-        buttonElevation = bundle.getFloat(ARG_ELEVATION)
+        buttonCornerRadius = bundle.getInt(ARG_CORNER_RADIUS)
+        buttonElevation = bundle.getInt(ARG_ELEVATION)
     }
 }
