@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.util.SparseArray
 import android.util.TypedValue
 import android.view.View
+import android.widget.Button
 import com.github.cthawanapong.model.BundleSavedState
 import com.github.cthawanapong.styleableviews.R
 import kotlinx.android.synthetic.main.view_styleable_button.view.*
@@ -107,6 +108,8 @@ class StyleableButton @JvmOverloads constructor(
             field = value
             setInternalButtonElevation(field)
         }
+    val styleableButton: Button
+        get() = button
 
     init {
         initInflate()
@@ -178,10 +181,6 @@ class StyleableButton @JvmOverloads constructor(
 
     private fun setInternalButtonElevation(elevation: Int) {
         cardElevation = elevation.toFloat()
-    }
-
-    fun onClick(onClickListener: OnClickListener) {
-        button.setOnClickListener(onClickListener)
     }
 
     override fun dispatchSaveInstanceState(container: SparseArray<Parcelable>) {
