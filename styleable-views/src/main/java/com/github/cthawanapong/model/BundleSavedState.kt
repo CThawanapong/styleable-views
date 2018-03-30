@@ -12,7 +12,7 @@ import android.view.View
 class BundleSavedState : View.BaseSavedState {
     companion object {
         @JvmStatic
-        private val CREATOR: Parcelable.Creator<Any> = object : Parcelable.Creator<Any> {
+        val CREATOR: Parcelable.Creator<Any> = object : Parcelable.Creator<Any> {
             override fun createFromParcel(source: Parcel?): Any {
                 return BundleSavedState(source)
             }

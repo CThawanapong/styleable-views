@@ -7,7 +7,6 @@ apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "26.0.2"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,7 +43,7 @@ dokka {
 }
 
 dependencies {
-    ext.supportLibraryVersion = '27.0.2'
+    ext.supportLibraryVersion = '27.1.0'
 
     //Kotlin
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
