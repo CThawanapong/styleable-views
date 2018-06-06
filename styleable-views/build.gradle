@@ -43,7 +43,7 @@ dokka {
 }
 
 dependencies {
-    ext.supportLibraryVersion = '27.1.0'
+    ext.supportLibraryVersion = '27.1.1'
 
     //Kotlin
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"

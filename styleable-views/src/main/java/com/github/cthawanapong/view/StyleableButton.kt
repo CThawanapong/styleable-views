@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.content.ContextCompat
+import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.CardView
 import android.util.AttributeSet
 import android.util.SparseArray
@@ -129,7 +130,10 @@ class StyleableButton @JvmOverloads constructor(
                 buttonTextSize = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonTextSize, context.resources.getDimensionPixelSize(R.dimen.styleable_default_button_text_size)).toFloat()
                 buttonBackgroundColor = ta.getColor(R.styleable.StyleableButton_styleableButtonBackgroundColor, Color.TRANSPARENT)
                 buttonTextColor = ta.getColor(R.styleable.StyleableButton_styleableButtonTextColor, ContextCompat.getColor(context, R.color.default_text_color))
-                buttonLeftIcon = ta.getDrawable(R.styleable.StyleableButton_styleableButtonLeftDrawable)
+                val buttonLeftIconRes = ta.getResourceId(R.styleable.StyleableButton_styleableButtonLeftDrawable, 0)
+                if (buttonLeftIconRes != 0) {
+                    buttonLeftIcon = AppCompatResources.getDrawable(context, buttonLeftIconRes)
+                }
                 buttonDrawablePadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonDrawablePadding, 0)
                 buttonHorizontalPadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonHorizontalPadding, 0)
                 buttonVerticalPadding = ta.getDimensionPixelSize(R.styleable.StyleableButton_styleableButtonVerticalPadding, context.resources.getDimension(R.dimen.styleable_default_button_horizontal_padding).toInt())
