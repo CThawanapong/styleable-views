@@ -3,6 +3,7 @@ package com.github.cthawanapong.model
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.annotation.NonNull
 import android.view.View
 
 /**
@@ -11,7 +12,8 @@ import android.view.View
  */
 class BundleSavedState : View.BaseSavedState {
     companion object {
-        @JvmStatic
+        @JvmField
+        @NonNull
         val CREATOR: Parcelable.Creator<Any> = object : Parcelable.Creator<Any> {
             override fun createFromParcel(source: Parcel?): Any {
                 return BundleSavedState(source)
