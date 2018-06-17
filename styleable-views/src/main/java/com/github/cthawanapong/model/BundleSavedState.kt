@@ -29,7 +29,7 @@ class BundleSavedState : View.BaseSavedState {
     lateinit var bundle: Bundle
 
     constructor(source: Parcel?) : super(source) {
-        bundle = source?.readBundle(ClassLoader.getSystemClassLoader()) ?: Bundle()
+        bundle = source?.readBundle(javaClass.classLoader) ?: Bundle()
     }
 
     constructor(superState: Parcelable) : super(superState)
