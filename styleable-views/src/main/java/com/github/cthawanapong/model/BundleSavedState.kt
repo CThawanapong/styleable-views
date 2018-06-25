@@ -26,7 +26,11 @@ class BundleSavedState : View.BaseSavedState {
         }
     }
 
-    lateinit var bundle: Bundle
+    var bundle: Bundle = Bundle()
+        get() {
+            field.classLoader = Bundle::class.java.classLoader
+            return field
+        }
 
     constructor(source: Parcel?) : super(source) {
         bundle = source?.readBundle(Bundle::class.java.classLoader) ?: Bundle()
