@@ -1,6 +1,6 @@
 apply plugin: 'com.jfrog.bintray'
 
-version = '2.2.3'
+version = '2.2.4'
 
 bintray {
     Properties properties = new Properties()

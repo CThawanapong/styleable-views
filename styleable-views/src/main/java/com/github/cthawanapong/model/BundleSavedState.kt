@@ -4,36 +4,36 @@ import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.NonNull
-import android.view.View
+import android.support.v4.view.AbsSavedState
 
 /**
  * Created by CThawanapong on 27/1/2018 AD.
  * Email: c.thawanapong@gmail.com
  */
-class BundleSavedState : View.BaseSavedState {
+class BundleSavedState : AbsSavedState {
     companion object {
         @JvmField
         @NonNull
-        val CREATOR: Parcelable.Creator<Any> = object : Parcelable.Creator<Any> {
-            override fun createFromParcel(source: Parcel?): Any {
-                return BundleSavedState(source)
+        val CREATOR: Parcelable.Creator<BundleSavedState> = object : Parcelable.ClassLoaderCreator<BundleSavedState> {
+            override fun createFromParcel(source: Parcel, loader: ClassLoader?): BundleSavedState {
+                return BundleSavedState(source, loader)
             }
 
-            override fun newArray(size: Int): Array<Any> {
-                return arrayOf(size)
+            override fun createFromParcel(source: Parcel): BundleSavedState {
+                return BundleSavedState(source, null)
+            }
+
+            override fun newArray(size: Int): Array<BundleSavedState?> {
+                return arrayOfNulls(size)
             }
 
         }
     }
 
     var bundle: Bundle = Bundle()
-        get() {
-            field.classLoader = Bundle::class.java.classLoader
-            return field
-        }
 
-    constructor(source: Parcel?) : super(source) {
-        bundle = source?.readBundle(Bundle::class.java.classLoader) ?: Bundle()
+    constructor(source: Parcel, classLoader: ClassLoader?) : super(source, classLoader) {
+        bundle = source.readBundle(classLoader) ?: Bundle()
     }
 
     constructor(superState: Parcelable) : super(superState)
